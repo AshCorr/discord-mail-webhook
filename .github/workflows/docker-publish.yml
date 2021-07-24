@@ -5,7 +5,7 @@ on:
     types: [created,edited]
 
 env:
-  REGISTRY: ghcr.io
+  REGISTRY: docker.pkg.github.com
   IMAGE_NAME: ashcorr/discord-mail-webhook
   
 permissions:
