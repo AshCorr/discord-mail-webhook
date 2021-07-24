@@ -1,6 +1,6 @@
 const notifier = require('mail-notifier');
 const axios = require('axios');
-const logger = require('tracer').colorConsole({ format: '[{{timestamp}} {{title}}] (in {{file}}:{{line}}) {{message}}', level: process.env.IMAP_TLS || 'info' });
+const logger = require('tracer').colorConsole({ format: '[{{timestamp}} {{title}}] (in {{file}}:{{line}}) {{message}}', level: process.env.LOG_LEVEL || 'info' });
 
 const usernames = process.env.IMAP_USERNAMES.split(",");
 const passwords = process.env.IMAP_PASSWORDS.split(",");
@@ -28,6 +28,7 @@ const triggerWebhook = (mail) => {
     });
 }
 
+logger.info("Log level: " + process.env.LOG_LEVEL || "info")
 logger.info("IMAP Host: " + process.env.IMAP_HOST);
 logger.info("IMAP Port: " + process.env.IMAP_PORT || 141);
 logger.info("IMAP Check TLS: " + (process.env.IMAP_TLS || "true"));
