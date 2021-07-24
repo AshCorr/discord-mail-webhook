@@ -1,8 +1,8 @@
 name: Docker
 
 on:
-  release:
-    types: [created,edited]
+  push:
+    branches: *
 
 env:
   REGISTRY: ghcr.io
@@ -34,4 +34,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.GITHUB_REPOSITORY_SLUG }}:latest, ${{ env.REGISTRY }}/${{ env.GITHUB_REPOSITORY_SLUG }}:${{ github.event.release.tag_name }}
+          tags:  ${{ env.REGISTRY }}/${{ env.GITHUB_REPOSITORY_SLUG }}:${{ env.GITHUB_REF_SLUG }}-${{ github.sha }}
