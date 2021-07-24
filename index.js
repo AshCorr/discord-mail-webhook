@@ -1,13 +1,13 @@
 const notifier = require('mail-notifier');
 const axios = require('axios');
-const logger = require('tracer').colorConsole({ format: '[{{timestamp}} {{title}}] (in {{file}}:{{line}}) {{message}}' });
+const logger = require('tracer').colorConsole({ format: '[{{timestamp}} {{title}}] (in {{file}}:{{line}}) {{message}}', level: process.env.IMAP_TLS || 'info' });
 
 const usernames = process.env.IMAP_USERNAMES.split(",");
 const passwords = process.env.IMAP_PASSWORDS.split(",");
 const githubURL = process.env.DISCORD_WH_URL;
 
 const triggerWebhook = (mail) => {
-
+    logger.debug(mail)
     const description = mail.text === undefined ? "" : mail.text.substring(0, 1000);
 
     require("axios").post(githubURL, {
