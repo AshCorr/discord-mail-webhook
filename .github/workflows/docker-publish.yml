@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ashcorr/discord-mail-webhook
+  IMAGE_NAME: AshCorr/discord-mail-webhook
   
 permissions:
   packages: write
