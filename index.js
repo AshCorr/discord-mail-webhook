@@ -1,6 +1,3 @@
-
-require('dotenv').config();
-
 const notifier = require('mail-notifier');
 const axios = require('axios');
 const logger = require('tracer').colorConsole({ format: '[{{timestamp}} {{title}}] (in {{file}}:{{line}}) {{message}}' });
@@ -40,7 +37,7 @@ usernames.forEach((username, index) => {
         user: username,
         password: passwords[index],
         host: process.env.IMAP_HOST,
-        port: process.env.IMAP_PORT || 141,
+        port: process.env.IMAP_PORT || 143,
         tls: process.env.IMAP_TLS === "true" ? true : false,
         autotls: 'always',
         markSeen: process.env.IMAP_MARK_SEEN === "false" ? false : true
