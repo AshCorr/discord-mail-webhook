@@ -26,3 +26,4 @@ Config is managed through environment variables.
 | IMAP_PORT      | IMAP hostname for mailbox eg mail.google.com | 143     |
 | IMAP_TLS       | Check for valid TLS                          | true    |
 | IMAP_MARK_SEEN | Mark emails as seen                          | true    |
+| LOG_LEVEL      | Log level                                    | info    |
