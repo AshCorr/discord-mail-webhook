@@ -5,7 +5,7 @@ on:
     types: [created,edited]
 
 env:
-  REGISTRY: docker.pkg.github.com
+  REGISTRY: ghcr.io
   IMAGE_NAME: ashcorr/discord-mail-webhook
   
 permissions:
@@ -36,4 +36,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.IMAGE_NAME }}:latest, ${{ env.IMAGE_NAME }}:${{ github.event.release.tag_name }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest, ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.event.release.tag_name }}
