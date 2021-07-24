@@ -1,8 +1,9 @@
 # discord-mail-webhook
 
-Automatically scan SMTP mailboxes and post emails to to a Discord webhook
+Automatically scan SMTP mailboxes and post emails to a Discord webhook
 ![image](https://user-images.githubusercontent.com/21217225/126869453-95b5ddd1-fc0a-4444-8c64-e11b56f2caac.png)
 
+*Mark all emails as Read before using this bot. Currently there is nothing stopping this bot from flying way past the discord rate limit.*
 
 ## Usage
 ### Docker
