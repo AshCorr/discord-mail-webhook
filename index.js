@@ -48,6 +48,7 @@ usernames.forEach((username, index) => {
           logger.info("Connected " + username + ". Listening for emails.");
         })
         .on('error', (e) => {
+          logger.error("Failed to connect with " + username, e)
           throw e;
         })
         .on('mail', triggerWebhook)
