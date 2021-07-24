@@ -6,13 +6,13 @@ const usernames = process.env.IMAP_USERNAMES.split(",");
 const passwords = process.env.IMAP_PASSWORDS.split(",");
 const githubURL = process.env.DISCORD_WH_URL;
 
-const triggerWebhook = (mail) => {
+const triggerWebhook = (username, mail) => {
     logger.debug(mail)
     const description = mail.text === undefined ? "" : mail.text.substring(0, 1000);
 
     require("axios").post(githubURL, {
       content: "",
-      username: mail.to,
+      username: username,
       embeds: [
         {
           title: mail.headers.subject,
@@ -53,7 +53,7 @@ usernames.forEach((username, index) => {
           logger.error("Failed to connect with " + username, e)
           throw e;
         })
-        .on('mail', triggerWebhook)
+        .on('mail', (mail) => triggerWebhook(username, mail))
     .start();
 })
 
