@@ -12,6 +12,7 @@ const triggerWebhook = (mail) => {
 
     require("axios").post(githubURL, {
       content: "",
+      username: mail.to,
       embeds: [
         {
           title: mail.headers.subject,
