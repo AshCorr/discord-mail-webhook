@@ -47,8 +47,8 @@ usernames.forEach((username, index) => {
         .on('connected',() => {
           logger.info("Connected " + username + ". Listening for emails.");
         })
-        .on('error', (err) => {
-          throw error;
+        .on('error', (e) => {
+          throw e;
         })
         .on('mail', triggerWebhook)
     .start();
