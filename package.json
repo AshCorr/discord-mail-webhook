@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.23.0",
     "mail-notifier": "^0.5.0",
     "tracer": "^1.1.5"
   }
