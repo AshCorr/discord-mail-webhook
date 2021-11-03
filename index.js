@@ -5,10 +5,17 @@ const logger = require('tracer').colorConsole({ format: '[{{timestamp}} {{title}
 const usernames = process.env.IMAP_USERNAMES.split(",");
 const passwords = process.env.IMAP_PASSWORDS.split(",");
 const githubURL = process.env.DISCORD_WH_URL;
+const imapMarkSeen = process.env.IMAP_MARK_SEEN === "false" ? false : true;
+
+const startTime = new Date();
 
 const triggerWebhook = (username, mail) => {
     logger.debug(mail)
     const description = mail.text === undefined ? "" : mail.text.substring(0, 1000);
+
+    if (!imapMarkSeen && mail.date < startTime) {
+      return;
+    }
 
     require("axios").post(githubURL, {
       content: "",
@@ -42,7 +49,7 @@ usernames.forEach((username, index) => {
         port: process.env.IMAP_PORT || 143,
         tls: process.env.IMAP_TLS === "true" ? true : false,
         autotls: 'always',
-        markSeen: process.env.IMAP_MARK_SEEN === "false" ? false : true
+        markSeen: imapMarkSeen
     };
 
     notifier(imap)
